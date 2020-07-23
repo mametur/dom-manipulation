@@ -28,7 +28,7 @@
     <div id='side to inspect' class='exercise-output'>
 
 
-      <div id='target'>
+      <div id='expected'>
         <h1>a list of things</h1>
         <ul>
           <li>robots</li>
@@ -37,7 +37,7 @@
         </ul>
       </div>
       <br>
-      <div id='replication'>
+      <div id='actual'>
         <h1>a list of things</h1>
         <ul>
           <li>robots</li>
@@ -47,8 +47,8 @@
       </div>
       <br>
       <script id='DOM manipulation script'>
-        const replicationDiv = document.getElementById('replication');
-        const ulEl = replicationDiv.children[1];
+        const actualDiv = document.getElementById('actual');
+        const ulEl = actualDiv.children[1];
         const liToCorrect = ulEl.children[1];
         liToCorrect.innerText = 'solar systems';
       </script>
@@ -62,11 +62,11 @@
         ui: 'bdd',
       })
       compareElements.attributesToTest = [
-        "nodeName", 'innerText', 'href', 'target', 'children', 'childElementCount'
+        "nodeName", 'innerText', 'href', 'expected', 'children', 'childElementCount'
       ];
       compareElements(
-        document.getElementById('replication'),
-        document.getElementById('target')
+        document.getElementById('actual'),
+        document.getElementById('expected')
       );
       mocha.run();
     </script>

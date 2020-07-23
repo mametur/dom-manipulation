@@ -27,7 +27,7 @@
   <section class='things-to-study'>
     <div id='side to inspect' class='exercise-output'>
 
-      <div id='target'>
+      <div id='expected'>
         <h1>a list of things</h1>
         <ul>
           <li>robots</li>
@@ -36,7 +36,7 @@
         </ul>
       </div>
 
-      <div id='replication'>
+      <div id='actual'>
         <ul>
           <li>robots</li>
           <li>wrong wrong wrong wrong</li>
@@ -58,11 +58,11 @@
         ui: 'bdd',
       })
       compareElements.attributesToTest = [
-        "nodeName", 'innerText', 'href', 'target', 'children', 'childElementCount'
+        "nodeName", 'innerText', 'href', 'expected', 'children', 'childElementCount'
       ];
       compareElements(
-        document.getElementById('replication'),
-        document.getElementById('target')
+        document.getElementById('actual'),
+        document.getElementById('expected')
       );
       mocha.run();
     </script>

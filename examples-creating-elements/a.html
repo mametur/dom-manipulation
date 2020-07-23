@@ -11,8 +11,8 @@
   <link href="../dependencies/mocha/mocha.css" rel="stylesheet" />
   <script src="../dependencies/mocha/mocha.js"></script>
   <script src="../dependencies/assert.js"></script>
-
   <script src="../dependencies/testTheDom.js"></script>
+
 
   <link rel="stylesheet" type="text/css" href="../style.css">
 
@@ -27,19 +27,19 @@
   <section class='things-to-study'>
     <div id='side to inspect' class='exercise-output'>
 
-      <div id='target'>
-        <a href='https://www.badgerbadgerbadger.com' target="_blank">learn about badgers</a>
+      <div id='expected'>
+        <a href='https://www.badgerbadgerbadger.com' expected="_blank">learn about badgers</a>
       </div>
       <br>
-      <div id='replication'></div>
+      <div id='actual'></div>
       <br>
       <script id='DOM manipulation script'>
         const aEl = document.createElement('a');
         aEl.innerText = 'learn about badgers';
         aEl.href = 'https://www.badgerbadgerbadger.com';
-        aEl.target = '_blank';
+        aEl.expected = '_blank';
 
-        document.getElementById('replication')
+        document.getElementById('actual')
           .appendChild(aEl);
       </script>
 
@@ -52,11 +52,11 @@
         ui: 'bdd',
       })
       compareElements.attributesToTest = [
-        "nodeName", 'innerText', 'href', 'target', 'childElementCount', 'children',
+        "nodeName", 'innerText', 'href', 'expected', 'childElementCount', 'children',
       ];
       compareElements(
-        document.getElementById('replication'),
-        document.getElementById('target')
+        document.getElementById('actual'),
+        document.getElementById('expected')
       );
       mocha.run();
     </script>

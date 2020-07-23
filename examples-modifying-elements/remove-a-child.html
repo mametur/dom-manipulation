@@ -27,25 +27,25 @@
   <section class='things-to-study'>
     <div id='side to inspect' class='exercise-output'>
 
-      <div id='target'>
+      <div id='expected'>
         <details>
           <summary>a great tutorial on DOM manipulation:</summary>
-          <a href="https://www.youtube.com/watch?v=0ik6X4DJKCc" target='_blank'>Mr. Traversy does it again!</a>
+          <a href="https://www.youtube.com/watch?v=0ik6X4DJKCc" expected='_blank'>Mr. Traversy does it again!</a>
         </details>
       </div>
       <br>
-      <div id='replication'>
+      <div id='actual'>
         <details>
           <summary>a great tutorial on DOM manipulation:</summary>
-          <a href="https://www.badgerbadgerbadger.com" target='_blank'>Mr. Traversy does it again!</a>
-          <a href="https://www.youtube.com/watch?v=0ik6X4DJKCc" target='_blank'>Mr. Traversy does it again!</a>
+          <a href="https://www.badgerbadgerbadger.com" expected='_blank'>Mr. Traversy does it again!</a>
+          <a href="https://www.youtube.com/watch?v=0ik6X4DJKCc" expected='_blank'>Mr. Traversy does it again!</a>
         </details>
       </div>
       <br>
 
       <script id='DOM manipulation script'>
-        const replicationDiv = document.getElementById('replication');
-        const detailsEl = replicationDiv.children[0];
+        const actualDiv = document.getElementById('actual');
+        const detailsEl = actualDiv.children[0];
         const extraLink = detailsEl.children[1];
 
         detailsEl.removeChild(extraLink);
@@ -60,11 +60,11 @@
         ui: 'bdd',
       })
       compareElements.attributesToTest = [
-        "nodeName", 'innerText', 'href', 'target', 'children', 'childElementCount'
+        "nodeName", 'innerText', 'href', 'expected', 'children', 'childElementCount'
       ];
       compareElements(
-        document.getElementById('replication'),
-        document.getElementById('target')
+        document.getElementById('actual'),
+        document.getElementById('expected')
       );
       mocha.run();
     </script>

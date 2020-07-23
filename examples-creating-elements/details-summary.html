@@ -28,14 +28,14 @@
     <div id='side to inspect' class='exercise-output'>
 
 
-      <div id='target'>
+      <div id='expected'>
         <details>
           <summary>a great tutorial on DOM manipulation:</summary>
-          <a href="https://www.youtube.com/watch?v=0ik6X4DJKCc" target='_blank'>Mr. Traversy does it again!</a>
+          <a href="https://www.youtube.com/watch?v=0ik6X4DJKCc" expected='_blank'>Mr. Traversy does it again!</a>
         </details>
       </div>
       <br>
-      <div id='replication'></div>
+      <div id='actual'></div>
       <br>
       <script id='DOM manipulation script'>
         const summaryEl = document.createElement('summary');
@@ -44,14 +44,14 @@
         const aEl = document.createElement('a');
         aEl.innerText = 'Mr. Traversy does it again!';
         aEl.href = 'https://www.youtube.com/watch?v=0ik6X4DJKCc';
-        aEl.target = '_blank';
+        aEl.expected = '_blank';
 
 
         const detailsEl = document.createElement('details');
         detailsEl.appendChild(summaryEl);
         detailsEl.appendChild(aEl);
 
-        document.getElementById('replication')
+        document.getElementById('actual')
           .appendChild(detailsEl);
       </script>
 
@@ -64,11 +64,11 @@
         ui: 'bdd',
       })
       compareElements.attributesToTest = [
-        "nodeName", 'innerText', 'href', 'target', 'children', 'childElementCount'
+        "nodeName", 'innerText', 'href', 'expected', 'children', 'childElementCount'
       ];
       compareElements(
-        document.getElementById('replication').children[0],
-        document.getElementById('target').children[0]
+        document.getElementById('actual').children[0],
+        document.getElementById('expected').children[0]
       );
       mocha.run();
     </script>

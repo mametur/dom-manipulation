@@ -27,7 +27,7 @@
   <section class='things-to-study'>
     <div id='side to inspect' class='exercise-output'>
 
-      <div id='target'>
+      <div id='expected'>
         <h1>a list of things</h1>
         <ol>
           <li>robots</li>
@@ -36,7 +36,7 @@
         </ol>
       </div>
       <br>
-      <div id='replication'>
+      <div id='actual'>
         <h1>a list of things</h1>
         <ul>
           <li>robots</li>
@@ -46,8 +46,8 @@
       </div>
       <br>
       <script id='DOM manipulation script'>
-        const replication = document.getElementById('replication')
-        const unorderedList = replication.children[1];
+        const actual = document.getElementById('actual')
+        const unorderedList = actual.children[1];
         console.log(unorderedList.children)
 
         // https://stackoverflow.com/questions/17094230/how-do-i-loop-through-children-objects-in-javascript
@@ -59,7 +59,7 @@
           orderedList.appendChild(nextChild);
         }
 
-        replication.replaceChild(orderedList, unorderedList);
+        actual.replaceChild(orderedList, unorderedList);
       </script>
 
     </div>
@@ -74,8 +74,8 @@
         "nodeName", 'innerText', 'children', 'childElementCount'
       ];
       compareElements(
-        document.getElementById('replication'),
-        document.getElementById('target')
+        document.getElementById('actual'),
+        document.getElementById('expected')
       );
       mocha.run();
     </script>

@@ -28,18 +28,18 @@
     <div id='side to inspect' class='exercise-output'>
 
 
-      <div id='target'>
+      <div id='expected'>
         <h1>hi!</h1>
       </div>
       <br>
-      <div id='replication'></div>
+      <div id='actual'></div>
       <br>
 
       <script id='DOM manipulation script'>
         const h1El = document.createElement('h1');
         h1El.innerText = 'hi!';
 
-        document.getElementById('replication')
+        document.getElementById('actual')
           .appendChild(h1El);
       </script>
 
@@ -55,8 +55,8 @@
         "nodeName", 'innerText', 'childElementCount'
       ];
       compareElements(
-        document.getElementById('replication'),
-        document.getElementById('target')
+        document.getElementById('actual'),
+        document.getElementById('expected')
       );
       mocha.run();
     </script>

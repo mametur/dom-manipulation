@@ -28,12 +28,12 @@
     <div id='side to inspect' class='exercise-output'>
 
 
-      <div id='target'>
-        <a href='https://www.badgerbadgerbadger.com' target="_blank">learn about badgers</a>
+      <div id='expected'>
+        <a href='https://www.badgerbadgerbadger.com' expected="_blank">learn about badgers</a>
       </div>
 
-      <div id='replication'>
-        <a href='https://www.badgerbadgerbadger.com' target="blank">learn about pigs</a>
+      <div id='actual'>
+        <a href='https://www.badgerbadgerbadger.com' expected="blank">learn about pigs</a>
       </div>
 
       <script id='DOM manipulation script'>
@@ -50,11 +50,11 @@
         ui: 'bdd',
       })
       compareElements.attributesToTest = [
-        "nodeName", 'innerText', 'href', 'target', 'children', 'childElementCount'
+        "nodeName", 'innerText', 'href', 'expected', 'children', 'childElementCount'
       ];
       compareElements(
-        document.getElementById('replication'),
-        document.getElementById('target')
+        document.getElementById('actual'),
+        document.getElementById('expected')
       );
       mocha.run();
     </script>

@@ -27,7 +27,7 @@
   <section class='things-to-study'>
     <div id='side to inspect' class='exercise-output'>
 
-      <div id='target'>
+      <div id='expected'>
         <h1>a list of things</h1>
         <ul>
           <li>robots</li>
@@ -36,7 +36,7 @@
         </ul>
       </div>
       <br>
-      <div id='replication'></div>
+      <div id='actual'></div>
       <br>
       <script id='DOM manipulation script'>
         const h1El = document.createElement('h1');
@@ -56,9 +56,9 @@
         ulEl.appendChild(li_2);
         ulEl.appendChild(li_3);
 
-        const replication = document.getElementById('replication');
-        replication.appendChild(h1El);
-        replication.appendChild(ulEl);
+        const actual = document.getElementById('actual');
+        actual.appendChild(h1El);
+        actual.appendChild(ulEl);
       </script>
 
     </div>
@@ -73,8 +73,8 @@
         "nodeName", 'innerText', 'children', 'childElementCount'
       ];
       compareElements(
-        document.getElementById('replication'),
-        document.getElementById('target')
+        document.getElementById('actual'),
+        document.getElementById('expected')
       );
       mocha.run();
     </script>

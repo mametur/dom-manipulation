@@ -44,7 +44,7 @@ const { testComponent, testElement, compareElements } = (() => {
     }
   }
 
-  let attributesToTest = ['id', 'className', 'nodeName', 'childElementCount', 'children'];
+  let attributesToTest = ['id', 'className', 'nodeName', 'innerText', 'childElementCount', 'children'];
 
   Object.defineProperty(testComponent, 'attributesToTest', {
     get: function () {
@@ -55,7 +55,7 @@ const { testComponent, testElement, compareElements } = (() => {
     }
   });
 
-  const compareElements = (toTest, target, name) => {
+  const compareElements = (actual, expected, name) => {
 
     // // mocha already does this
     // const indexOfChildren = attributesToTest.indexOf('children');
@@ -65,48 +65,48 @@ const { testComponent, testElement, compareElements } = (() => {
     // } // it's visually best if children are tested last
 
     name = typeof name !== 'string'
-      ? `comparing "${toTest.id}" to "${target.id}"`
+      ? `comparing "${actual.id}" to "${expected.id}"`
       : name;
 
     describe(name, () => {
       it("it should be a DOM element", () => {
-        assert.ok(toTest instanceof Element);
+        assert.ok(actual instanceof Element);
       });
-      if (!(toTest instanceof Element)) return;
+      if (!(actual instanceof Element)) return;
 
       attributesToTest.forEach(attribute => {
-        if (!(attribute in target)) return; // because tests cases won't have all DOM attributes
+        if (!(attribute in expected)) return; // because tests cases won't have all DOM attributes
 
         if (attribute === 'children') {
-          if (toTest.childElementCount === target.childElementCount) {
+          if (actual.childElementCount === expected.childElementCount) {
             describe(`testing children`, () => {
-              for (let i = 0; i < target.childElementCount; i++) {
-                const nextChild = target.children[i];
-                compareElements(toTest.children[i], nextChild, `child ${i}: ${nextChild.nodeName}`);
+              for (let i = 0; i < expected.childElementCount; i++) {
+                const nextChild = expected.children[i];
+                compareElements(actual.children[i], nextChild, `child ${i}: ${nextChild.nodeName}`);
               };
             });
           } else {
-            if (toTest.childElementCount > target.childElementCount) {
-              it(`too many children: ${toTest.childElementCount} > ${target.childElementCount}`, () => {
-                assert.ok(toTest.childElementCount === target.childElementCount);
+            if (actual.childElementCount > expected.childElementCount) {
+              it(`too many children: ${actual.childElementCount} > ${expected.childElementCount}`, () => {
+                assert.ok(actual.childElementCount === expected.childElementCount);
               })
-            } else if (toTest.childElementCount < target.childElementCount) {
-              it(`too few children: ${toTest.childElementCount} < ${target.childElementCount}`, () => {
-                assert.ok(toTest.childElementCount === target.childElementCount);
+            } else if (actual.childElementCount < expected.childElementCount) {
+              it(`too few children: ${actual.childElementCount} < ${expected.childElementCount}`, () => {
+                assert.ok(actual.childElementCount === expected.childElementCount);
               })
             } else {
-              it(`incorrect number of children: ${toTest.childElementCount} !== ${target.childElementCount}`, () => {
-                assert.ok(toTest.childElementCount === target.childElementCount);
+              it(`incorrect number of children: ${actual.childElementCount} !== ${expected.childElementCount}`, () => {
+                assert.ok(actual.childElementCount === expected.childElementCount);
               })
             }
           }
         } else {
-          const attributeString = typeof target[attribute] === 'string'
-            ? '"' + target[attribute] + '"'
-            : target[attribute];
+          const attributeString = typeof expected[attribute] === 'string'
+            ? '"' + expected[attribute] + '"'
+            : expected[attribute];
 
           it(`${attribute} should be:  ${attributeString}`, () => {
-            assert.strictEqual(toTest[attribute], target[attribute]);
+            assert.strictEqual(actual[attribute], expected[attribute]);
           });
         };
       });

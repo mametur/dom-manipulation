@@ -27,11 +27,11 @@
   <section class='things-to-study'>
     <div id='side to inspect' class='exercise-output'>
 
-      <div id='target'>
+      <div id='expected'>
         <h1>hi!</h1>
       </div>
 
-      <div id='replication'>
+      <div id='actual'>
         <h1>bye!</h1>
       </div>
 
@@ -52,8 +52,8 @@
         "nodeName", 'innerText', 'childElementCount'
       ];
       compareElements(
-        document.getElementById('replication'),
-        document.getElementById('target')
+        document.getElementById('actual'),
+        document.getElementById('expected')
       );
       mocha.run();
     </script>
