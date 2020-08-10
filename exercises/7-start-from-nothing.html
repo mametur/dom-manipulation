@@ -46,6 +46,33 @@
         'use strict';
 
         // write me! (... without using cloneNode, that's kind of cheating)
+        const actual = document.getElementById('actual');
+
+        const headTag = document.createElement('h2');
+        headTag.innerHTML = "a list of things";
+        actual.appendChild(headTag);
+
+        const OlTag = document.createElement('ul');
+        const aTag = document.createElement('a');
+
+        const selectFirstList = document.getElementById('expected').getElementsByTagName('LI');
+        for (let i = 0; i < selectFirstList.length; i++) {
+
+          if (i === 2) {
+            aTag.innerHTML = "learn about badgers";
+            aTag.href = 'https://www.badgerbadgerbadger.com';
+            const liTag = document.createElement('li');
+            liTag.appendChild(aTag);
+            OlTag.appendChild(liTag);
+            continue;
+          }
+
+          const liTag = document.createElement('li');
+          liTag.innerHTML = selectFirstList[i].innerHTML;
+          OlTag.appendChild(liTag)
+        }
+
+        actual.appendChild(OlTag);
       </script>
 
     </div>
