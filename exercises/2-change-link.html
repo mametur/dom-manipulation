@@ -33,7 +33,7 @@
       </div>
 
       <div id='actual'>
-        <a href='https://www.badgerbadgerbadger.com' expected="blank">learn about pigs</a>
+        <a href='https://www.badgerbadgerbadger.com' expected="xblank">learn about pigs</a>
       </div>
 
       <script id='DOM manipulation script'>
@@ -41,6 +41,7 @@
         'use strict';
 
         // write me! (... without using cloneNode, that's kind of cheating)
+        const aTag = document.getElementById('actual').getElementsByTagName('A')[0].innerHTML = "learn about badgers";
       </script>
 
     </div>
@@ -52,7 +53,7 @@
         ui: 'bdd',
       })
       compareElements.attributesToTest = [
-        "nodeName", 'innerText', 'href', 'expected', 'children', 'childElementCount'
+        "nodeName", 'innerText', 'href', 'children', 'childElementCount'
       ];
       compareElements(
         document.getElementById('actual'),
