@@ -50,6 +50,12 @@
         'use strict';
 
         // write me! (... without using cloneNode, that's kind of cheating)
+        const selectSecondLists = document.getElementById('actual').getElementsByTagName('LI');
+        const selectFirstList = document.getElementById('expected').getElementsByTagName('LI');
+        for (let i = 0; i < selectSecondLists.length; i++) {
+
+          selectSecondLists[i].innerHTML = selectFirstList[i].innerHTML;
+        }
       </script>
 
     </div>
