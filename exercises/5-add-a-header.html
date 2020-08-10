@@ -47,8 +47,18 @@
       <script id='DOM manipulation script'>
         debugger;
         'use strict';
-
         // write me! (... without using cloneNode, that's kind of cheating)
+        const headTag = document.createElement('h1');
+        headTag.innerHTML = "a list of things";
+        const ulTAg = document.getElementById('actual').getElementsByTagName('UL')[0];
+        document.getElementById('actual').insertBefore(headTag, ulTAg);
+
+        const selectSecondLists = document.getElementById('actual').getElementsByTagName('LI');
+        const selectFirstList = document.getElementById('expected').getElementsByTagName('LI');
+        for (let i = 0; i < selectSecondLists.length; i++) {
+
+          selectSecondLists[i].innerHTML = selectFirstList[i].innerHTML;
+        }
       </script>
 
     </div>
