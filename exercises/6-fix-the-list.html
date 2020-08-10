@@ -50,6 +50,26 @@
         'use strict';
 
         // write me! (... without using cloneNode, that's kind of cheating)
+        const actual = document.getElementById('actual');
+        actual.getElementsByTagName('OL')[0].remove();
+
+        const headTag = document.createElement('h1');
+        headTag.innerHTML = "a list of things";
+        actual.appendChild(headTag);
+
+        const OlTag = document.createElement('ul');
+
+
+
+
+        const selectFirstList = document.getElementById('expected').getElementsByTagName('LI');
+        for (let i = 0; i < selectFirstList.length; i++) {
+          const liTag = document.createElement('li');
+          liTag.innerHTML = selectFirstList[i].innerHTML;
+          OlTag.appendChild(liTag)
+        }
+
+        actual.appendChild(OlTag);
       </script>
 
     </div>
