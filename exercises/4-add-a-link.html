@@ -41,7 +41,11 @@
         debugger;
         'use strict';
 
-       // write me! (... without using cloneNode, that's kind of cheating)
+        // write me! (... without using cloneNode, that's kind of cheating)
+        const createATag = document.createElement('a');
+        createATag.href = "https://www.youtube.com/watch?v=0ik6X4DJKCc";
+        createATag.innerHTML = "Mr. Traversy does it again!";
+        document.getElementById('actual').appendChild(createATag);
       </script>
 
     </div>
